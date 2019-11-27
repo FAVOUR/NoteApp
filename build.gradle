@@ -26,3 +26,9 @@ allprojects {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
+
+ext{
+    //App dependency
+    recyclerViewVersion = '1.0.0'
+
+}
