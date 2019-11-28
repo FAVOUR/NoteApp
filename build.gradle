@@ -30,5 +30,7 @@ task clean(type: Delete) {
 ext{
     //App dependency
     recyclerViewVersion = '1.0.0'
+    roomVersion = '2.1.0'
+
 
 }
