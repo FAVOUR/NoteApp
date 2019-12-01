@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 
   <data>
 
       <variable
-          name=""
-          type="" />
+          name="duties"
+          type="com.example.todo.tasks.data.Task" />
 
   </data>
 
@@ -19,11 +17,13 @@
 
 
         <CheckBox
+            android:id="@+id/completedCheckbox"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"/>
 
         <TextView
+            android:id="@+id/task"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="9"/>
