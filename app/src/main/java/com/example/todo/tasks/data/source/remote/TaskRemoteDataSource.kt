@@ -17,7 +17,7 @@ import java.lang.Exception
 
 
 
-class TaskRemoteDataSource(): TasksDataSource {
+class TaskRemoteDataSource: TasksDataSource {
 
     private val TIME_DELAY = 2000L
 
