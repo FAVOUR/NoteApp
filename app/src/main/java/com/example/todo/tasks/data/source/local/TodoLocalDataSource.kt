@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.map
 import com.example.todo.tasks.data.Result
 import com.example.todo.tasks.data.Task
-import com.example.todo.tasks.data.TasksDataSource
+import com.example.todo.tasks.data.source.TasksDataSource
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext

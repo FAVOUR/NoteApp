@@ -13,9 +13,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.example.todo.tasks.data
+package com.example.todo.tasks.data.source
 
 import androidx.lifecycle.LiveData
+import com.example.todo.tasks.data.Result
+import com.example.todo.tasks.data.Task
 
 /**
  * Main entry point for accessing tasks data.
