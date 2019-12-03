@@ -96,8 +96,14 @@ class DefaultTaskRepository( application: Application) {
 
     suspend fun getTasks(forceUpdate: Boolean=false):Result<List<Task>>{
 
+
         if (forceUpdate){
-            updateRemoteDataSource()
+            try {
+                updateRemoteDataSource()
+            }catch (ex: Exception) {
+                return Result.Error(ex)
+            }
+
         }
 
         return taskRemoteDataSource.getTasks()
