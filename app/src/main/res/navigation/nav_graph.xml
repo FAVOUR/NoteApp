@@ -19,17 +19,35 @@
         android:id="@+id/staticsticsFragment"
         android:name="com.example.todo.StaticsticsFragment"
         android:label="fragment_staticstics"
-        tools:layout="@layout/fragment_staticstics" />
+        tools:layout="@layout/fragment_staticstics" >
+        <action
+            android:id="@+id/action_staticsticsFragment_to_taskFragment"
+            app:destination="@id/taskFragment" />
+    </fragment>
     <fragment
         android:id="@+id/taskFragment"
         android:name="com.example.todo.TaskFragment"
         android:label="fragment_task"
-        tools:layout="@layout/fragment_task" />
+        tools:layout="@layout/fragment_task" >
+        <action
+            android:id="@+id/action_taskFragment_to_staticsticsFragment"
+            app:destination="@id/staticsticsFragment" />
+        <action
+            android:id="@+id/action_taskFragment_to_task_details_fragment"
+            app:destination="@id/task_details_fragment" />
+        <action
+            android:id="@+id/action_taskFragment_to_add_Edit_Task_Fragment"
+            app:destination="@id/add_Edit_Task_Fragment" />
+    </fragment>
     <fragment
         android:id="@+id/add_Edit_Task_Fragment"
         android:name="com.example.todo.Add_Edit_Task_Fragment"
         android:label="fragment_add__edit__task_"
-        tools:layout="@layout/fragment_add__edit__task_" />
+        tools:layout="@layout/fragment_add__edit__task_" >
+        <action
+            android:id="@+id/action_add_Edit_Task_Fragment_to_taskFragment"
+            app:destination="@id/taskFragment" />
+    </fragment>
 
 
 </navigation>
