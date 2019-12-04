@@ -1,8 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:app="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/nav_graph">
+            xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/nav_graph"
+            app:startDestination="@id/task_details_fragment">
 
+
+    <fragment
+        android:id="@+id/task_details_fragment"
+        android:name="com.example.todo.task_details_fragment"
+        android:label="Task Details"
+        tools:layout="@layout/fragment_task_details_fragment" >
+        <action
+            android:id="@+id/action_task_details_fragment_to_staticsticsFragment"
+            app:destination="@id/staticsticsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/staticsticsFragment"
+        android:name="com.example.todo.StaticsticsFragment"
+        android:label="fragment_staticstics"
+        tools:layout="@layout/fragment_staticstics" />
+    <fragment
+        android:id="@+id/taskFragment"
+        android:name="com.example.todo.TaskFragment"
+        android:label="fragment_task"
+        tools:layout="@layout/fragment_task" />
+    <fragment
+        android:id="@+id/add_Edit_Task_Fragment"
+        android:name="com.example.todo.Add_Edit_Task_Fragment"
+        android:label="fragment_add__edit__task_"
+        tools:layout="@layout/fragment_add__edit__task_" />
 
 
 </navigation>

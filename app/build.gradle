@@ -6,7 +6,8 @@ apply plugin: 'kotlin-android-extensions'
 
 apply plugin: 'kotlin-kapt'
 
-//apply plugin: "androidx.navigation.safeargs.kotlin"
+apply plugin: "androidx.navigation.safeargs.kotlin"
+
 
 android {
     compileSdkVersion 29
@@ -43,6 +44,7 @@ dependencies {
     //Architeture components
     implementation "androidx.room:room-runtime:$roomVersion"
     implementation "androidx.room:room-ktx:$roomVersion"
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     kapt "androidx.room:room-compiler:$roomVersion"
 
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion"
@@ -55,10 +57,9 @@ dependencies {
     implementation "androidx.navigation:navigation-ui-ktx:$navigationVersion"
 
 
-     //Kotlin
+    //Kotlin
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$rootProject.kotlin_version"
 //    implementation "androidx.fragment:fragment-ktx:$fragmentKtxVersion"
-
 
 
     implementation 'androidx.appcompat:appcompat:1.1.0'
