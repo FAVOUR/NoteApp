@@ -17,7 +17,6 @@ class TaskActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setupDrawerLayout()
-
     }
 
     private fun setupDrawerLayout() {
