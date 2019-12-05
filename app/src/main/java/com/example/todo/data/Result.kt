@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.example.todo.tasks.data
+package com.example.todo.data
 
 
 /**

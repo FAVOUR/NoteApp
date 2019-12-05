@@ -5,7 +5,7 @@
 
       <variable
           name="duties"
-          type="com.example.todo.tasks.data.Task" />
+          type="com.example.todo.data.Task" />
 
   </data>
 

@@ -1,4 +1,4 @@
-package com.example.todo.tasks.data
+package com.example.todo.data
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

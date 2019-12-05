@@ -1,9 +1,8 @@
-package com.example.todo.tasks.data.source.local
+package com.example.todo.data.source.local
 
 import androidx.room.Database
-import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.example.todo.tasks.data.Task
+import com.example.todo.data.Task
 
 /**
  * Created by Olije Favour on 11/28/2019.

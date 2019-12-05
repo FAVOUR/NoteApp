@@ -1,12 +1,12 @@
-package com.example.todo.tasks.data.source
+package com.example.todo.data.source
 
 import android.app.Application
 import androidx.room.Room
-import com.example.todo.tasks.data.Result
-import com.example.todo.tasks.data.Task
-import com.example.todo.tasks.data.source.local.TodoDatabase
-import com.example.todo.tasks.data.source.local.TodoLocalDataSource
-import com.example.todo.tasks.data.source.remote.TaskRemoteDataSource
+import com.example.todo.data.Result
+import com.example.todo.data.Task
+import com.example.todo.data.source.local.TodoDatabase
+import com.example.todo.data.source.local.TodoLocalDataSource
+import com.example.todo.data.source.remote.TaskRemoteDataSource
 import kotlinx.coroutines.*
 
 /**

@@ -1,10 +1,10 @@
-package com.example.todo.tasks.data.source.local
+package com.example.todo.data.source.local
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.map
-import com.example.todo.tasks.data.Result
-import com.example.todo.tasks.data.Task
-import com.example.todo.tasks.data.source.TasksDataSource
+import com.example.todo.data.Result
+import com.example.todo.data.Task
+import com.example.todo.data.source.TasksDataSource
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext

@@ -1,11 +1,11 @@
-package com.example.todo.tasks.data.source.remote
+package com.example.todo.data.source.remote
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.map
-import com.example.todo.tasks.data.Result
-import com.example.todo.tasks.data.Task
-import com.example.todo.tasks.data.source.TasksDataSource
+import com.example.todo.data.Result
+import com.example.todo.data.Task
+import com.example.todo.data.source.TasksDataSource
 import kotlinx.coroutines.delay
 import java.lang.Exception
 

@@ -1,13 +1,12 @@
 package com.example.todo.tasks
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.todo.databinding.AllTaskBinding
-import com.example.todo.tasks.data.Task
+import com.example.todo.data.Task
 
 /**
  * Created by Olije Favour on 11/26/2019.
