@@ -7,6 +7,7 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.todo.R
@@ -19,6 +20,8 @@ import kotlinx.android.synthetic.main.activity_main.*
 class TaskActivity : AppCompatActivity() {
 
     private lateinit var navDrawer: DrawerLayout
+    private lateinit var appBarConfiguration:AppBarConfiguration
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,7 +30,7 @@ class TaskActivity : AppCompatActivity() {
         setSupportActionBar(findViewById<Toolbar>(R.id.toolbar))
 
         val navController:NavController =findNavController(R.id.NavigationHost)
-        val appBarConfiguration:AppBarConfiguration=AppBarConfiguration.Builder(R.id.task_details_fragment,R.id.staticsticsFragment,R.id.add_Edit_Task_Fragment)
+        appBarConfiguration=AppBarConfiguration.Builder(R.id.task_details_fragment,R.id.staticsticsFragment,R.id.add_Edit_Task_Fragment)
                                                         .setDrawerLayout(navDrawer)
                                                          .build()
 
@@ -47,6 +50,14 @@ class TaskActivity : AppCompatActivity() {
                 setStatusBarBackground(R.color.colorPrimaryDark)
             }
     }
+
+    //Taking charge of the upbutton when clicked  by the user
+    override fun onSupportNavigateUp(): Boolean {
+        return findNavController(R.id.NavigationHost).navigateUp(appBarConfiguration) || onSupportNavigateUp()
+    }
+
+
+
 
 
 }
