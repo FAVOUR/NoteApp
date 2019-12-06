@@ -26,7 +26,7 @@
     </fragment>
     <fragment
         android:id="@+id/taskFragment"
-        android:name="com.example.todo.TaskFragment"
+        android:name="com.example.todo.tasks.TaskFragment"
         android:label="fragment_task"
         tools:layout="@layout/fragment_task" >
         <action
