@@ -31,9 +31,10 @@ class TaskActivity : AppCompatActivity() {
                                                         .setDrawerLayout(navDrawer)
                                                          .build()
 
+        //Help the navigationController to take make changes to the toolbar
         setupActionBarWithNavController(navController,appBarConfiguration)
 
-
+        // Allows for control of the  menu items in the navigation drawer
         navigationView.setupWithNavController(navController)
 
 
