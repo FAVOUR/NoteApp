@@ -67,6 +67,7 @@ class TaskAdapter(val taskViewModel: TaskViewModel):ListAdapter<Task,TaskAdapter
               return oldItem.id==newItem.id
           }
 
+
           override fun areContentsTheSame(oldItem: Task, newItem: Task): Boolean {
 
               return oldItem.equals(newItem)
