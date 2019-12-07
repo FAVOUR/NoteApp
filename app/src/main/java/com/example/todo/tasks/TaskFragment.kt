@@ -14,12 +14,16 @@ import com.example.todo.databinding.FragmentTaskBinding
  */
 class TaskFragment : Fragment() {
 
+    lateinit var viewFragmentBinding:FragmentTaskBinding
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
 //        return inflater.inflate(R.layout.fragment_task, container, false)
-        return FragmentTaskBinding.inflate(inflater, container, false).root
+        viewFragmentBinding= FragmentTaskBinding.inflate(inflater, container, false)
+
+        return viewFragmentBinding.root
     }
 
 

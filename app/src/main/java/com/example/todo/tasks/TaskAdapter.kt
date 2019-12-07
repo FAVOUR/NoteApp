@@ -62,6 +62,7 @@ class TaskAdapter(val taskViewModel: TaskViewModel):ListAdapter<Task,TaskAdapter
     }
 
       class TaskDiffUtils:DiffUtil.ItemCallback<Task>(){
+
           override fun areItemsTheSame(oldItem: Task, newItem: Task): Boolean {
 
               return oldItem.id==newItem.id
