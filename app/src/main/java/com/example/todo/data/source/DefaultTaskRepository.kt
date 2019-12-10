@@ -16,7 +16,9 @@ import kotlinx.coroutines.*
 
 
 
-class DefaultTaskRepository( application: Application) {
+//class DefaultTaskRepository( application: Application) {
+class DefaultTaskRepository private constructor(application: Application)  {
+
 
     private val taskDataSource:TodoLocalDataSource
     private val taskRemoteDataSource:TaskRemoteDataSource
@@ -26,6 +28,7 @@ class DefaultTaskRepository( application: Application) {
     companion object{
       @Volatile
 
+        //Can a variable by default be acessed by other threads ?
       private var INSTANCE : DefaultTaskRepository?=null
 
         fun getRepository(application:Application):DefaultTaskRepository{
