@@ -6,8 +6,13 @@
     <data>
 
 <!--        <variable-->
-<!--            name=""-->
-<!--            type="" />-->
+<!--            name="tasks"-->
+<!--            type="String" />-->
+
+        <variable
+            name="viewmodel"
+            type="com.example.todo.tasks.TaskViewModel" />
+
 
     </data>
 
