@@ -1,6 +1,7 @@
 package com.example.todo.data.source
 
 import android.app.Application
+import androidx.lifecycle.LiveData
 import androidx.room.Room
 import com.example.todo.data.Result
 import com.example.todo.data.Task
@@ -16,8 +17,8 @@ import kotlinx.coroutines.*
 
 
 
-//class DefaultTaskRepository( application: Application) {
-class DefaultTaskRepository private constructor(application: Application)  {
+class DefaultTaskRepository( application: Application) {
+//class DefaultTaskRepository private constructor(application: Application)  {
 
 
     private val taskDataSource:TodoLocalDataSource
@@ -56,6 +57,9 @@ class DefaultTaskRepository private constructor(application: Application)  {
         taskRemoteDataSource= TaskRemoteDataSource()
 
     }
+
+
+
 
 
 
@@ -111,6 +115,14 @@ class DefaultTaskRepository private constructor(application: Application)  {
 
         return taskRemoteDataSource.getTasks()
 
+    }
+
+
+    fun observeTasks(): LiveData<Result<List<Task>>> {
+        return taskDataSource.observeTasks()
+    }
+    fun observeTask(taskId: String): LiveData<Result<Task>> {
+        return taskDataSource.observeTask(taskId)
     }
 
     suspend fun saveTask(task:Task){
