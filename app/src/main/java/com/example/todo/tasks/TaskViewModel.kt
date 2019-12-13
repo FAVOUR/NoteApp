@@ -20,22 +20,24 @@ class TaskViewModel(application: Application):AndroidViewModel(application) {
 
    private val taskRepository=DefaultTaskRepository.getRepository(application)
 
+    private var currentfiltering=TaskFilterType.COMPLETED_TASK
+
     private val _forceUpdate = MutableLiveData<Boolean>(false)
 
 
-    private val _items:LiveData<Task> = _forceUpdate.switchMap { forceUpdate ->
+    private val _items:LiveData<List<Task>> = _forceUpdate.switchMap { forceUpdate ->
 
         if(forceUpdate){
 
             _isDataLoading.value=true
             viewModelScope.launch {
-                taskRepository.getTask(forceUpdate)
+                taskRepository.getTasks(forceUpdate)
             }
             _isDataLoading.value=false
 
         }
-          taskRepository.observeTask().switchMap {
-
+          taskRepository.observeTasks().switchMap {
+              filterTask(it)
         }
 
 
@@ -62,7 +64,7 @@ private fun filterTask(taskResult:Result<List<Task>>):LiveData<List<Task>>{
         isDataLoadingError.value=false
 
          viewModelScope.launch {
-             result.value=filter
+             result.value=filterItems(taskResult.data,currentfiltering)
          }
         }
 
@@ -71,7 +73,37 @@ private fun filterTask(taskResult:Result<List<Task>>):LiveData<List<Task>>{
   return  result
     }
 
-    private fun  filterItems(filterItems:List<Task>,filjteringType:TaskFI)
+    private fun  filterItems(itemList:List<Task>,filteringType:TaskFilterType):List<Task>{
+
+
+        val result =ArrayList<Task>()
+
+        for (item in itemList){
+
+            when(filteringType){
+
+                TaskFilterType.ACTIVE_TASK->{
+                   if(item.isActive) result.add(item)
+                }
+
+                TaskFilterType.ALLTASK->{
+                    result.add(item)
+                }
+
+                TaskFilterType.COMPLETED_TASK->{
+                    if(item.isCompleted)result.add(item)
+                }
+            }
+
+
+        }
+
+
+
+
+        return result
+
+    }
 
 
 

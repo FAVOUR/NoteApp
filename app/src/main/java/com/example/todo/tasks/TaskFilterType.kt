@@ -17,7 +17,7 @@ enum class TaskFilterType {
   ///ilters all active (not completed)tasks
     COMPLETED_TASK,
 
-    //Filters only active (not completed)tasks
 
+    //Filters only active (not completed)tasks
     ACTIVE_TASK
 }
