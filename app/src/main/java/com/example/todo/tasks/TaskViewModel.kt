@@ -45,9 +45,9 @@ class TaskViewModel(application: Application):AndroidViewModel(application) {
     var _isDataLoading = MutableLiveData<Boolean>()
     val isDataLoading :LiveData<Boolean> = _isDataLoading
 
-    private var _isLoadingError  = MutableLiveData<Boolean>()
+    private var _isDataLoadingError  = MutableLiveData<Boolean>()
 
-    val isLoadingError = _isLoadingError
+    val isDataLoadingError = _isDataLoadingError
 
 
 
@@ -59,15 +59,19 @@ private fun filterTask(taskResult:Result<List<Task>>):LiveData<List<Task>>{
 
 
         if (taskResult is Success){
-        isLoadingError.value=false
+        isDataLoadingError.value=false
 
-
+         viewModelScope.launch {
+             result.value=filter
+         }
         }
 
 
 
   return  result
     }
+
+    private fun  filterItems(filterItems:List<Task>,filjteringType:TaskFI)
 
 
 
