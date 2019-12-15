@@ -42,6 +42,8 @@ ext{
     materialVersion = '1.0.0'
     cardVersion = '1.0.0'
     fragmentKtxVersion = '1.1.0-rc01'
+    androidXAnnotations = '1.0.1'
+
 
 
 
