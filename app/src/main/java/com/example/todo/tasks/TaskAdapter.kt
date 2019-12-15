@@ -41,6 +41,7 @@ class TaskAdapter(val taskViewModel: TaskViewModel):ListAdapter<Task,TaskAdapter
            fun bind (taskViewModel: TaskViewModel,task:Task){
 
 
+               allTaskBinding.viewModel=taskViewModel
                allTaskBinding.duties=task
                allTaskBinding.executePendingBindings()
 
