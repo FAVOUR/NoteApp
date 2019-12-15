@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.widget.PopupMenu
 import androidx.fragment.app.viewModels
 import com.example.todo.R
 import com.example.todo.databinding.FragmentTaskBinding
@@ -32,6 +33,16 @@ class TaskFragment : Fragment() {
         }
 
         return viewFragmentBinding.root
+
+
+    }
+
+
+    fun showFiteringpopupMenu(){
+
+        val view = activity?.findViewById<View>(R.id.)
+        PopupMenu(requireContext(),view!!)
+
     }
 
 
