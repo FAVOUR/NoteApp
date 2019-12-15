@@ -3,6 +3,7 @@ package com.example.todo.tasks
 import android.app.Application
 import androidx.annotation.StringRes
 import androidx.lifecycle.*
+import com.example.todo.Event
 import com.example.todo.data.Result
 import com.example.todo.data.Task
 import com.example.todo.data.source.DefaultTaskRepository
@@ -44,6 +45,10 @@ class TaskViewModel(application: Application):AndroidViewModel(application) {
 
     private val _tasksAddViewVisible = MutableLiveData<Boolean>()
     val tasksAddViewVisible: LiveData<Boolean> = _tasksAddViewVisible
+
+    private val mSnackBarmessage = MutableLiveData<Event<Int>>()
+    val mSnackBarMessage:LiveData<Event<Int>> = mSnackBarmessage
+
 
 
 
@@ -98,12 +103,56 @@ private fun filterTask(taskResult:Result<List<Task>>):LiveData<List<Task>>{
          viewModelScope.launch {
              result.value=filterItems(taskResult.data,currentfiltering)
          }
+        }else{
+            isDataLoadingError.value=true
+            result.value= emptyList()
+            setSnackBarMessage(R.string.loading_tasks_error)
+
+
         }
-
-
 
   return  result
     }
+
+
+
+    fun clearCompletedTask(){
+
+        viewModelScope.launch {
+            taskRepository.clearCompletedTasks()
+            setSnackBarMessage(R.string.completed_tasks_cleared)
+        }
+    }
+
+
+    fun completeTask(task:Task, completed:Boolean)=viewModelScope.launch{
+        if (completed) {
+            taskRepository.completeTask(task)
+            setSnackBarMessage(R.string.task_marked_complete)
+        } else {
+            taskRepository.activateTask(task)
+            setSnackBarMessage(R.string.task_marked_active)
+        }
+    }
+
+
+    /**
+     * Called by Data Binding.
+     */
+//    fun openTask(taskId: String) {
+//        _openTaskEvent.value = Event(taskId)
+//    }
+//
+//    fun showEditResultMessage(result: Int) {
+//        if (resultMessageShown) return
+//        when (result) {
+//            EDIT_RESULT_OK -> showSnackbarMessage(R.string.successfully_saved_task_message)
+//            ADD_EDIT_RESULT_OK -> showSnackbarMessage(R.string.successfully_added_task_message)
+//            DELETE_RESULT_OK -> showSnackbarMessage(R.string.successfully_deleted_task_message)
+//        }
+//        resultMessageShown = true
+//    }
+
 
 
     private fun startFiltering (taskType:TaskFilterType){
@@ -113,74 +162,39 @@ private fun filterTask(taskResult:Result<List<Task>>):LiveData<List<Task>>{
         when(taskType){
 
             TaskFilterType.COMPLETED_TASK->{
-                setFilter(R.string.label_all,R.string.)
+                setFilter(R.string.label_completed,R.string.no_tasks_completed,R.drawable.ic_verified_user_96dp,false)
             }
 
             TaskFilterType.ALLTASK->{
+                setFilter(R.string.label_all,R.string.no_tasks_all,R.drawable.logo_no_fill,true)
 
             }
 
             TaskFilterType.ACTIVE_TASK->{
+                setFilter(R.string.label_active,R.string.no_tasks_active,R.drawable.ic_check_circle_96dp,false)
 
                 }
 
         }
-
+        // Refresh list
+        loadTasks(false)
     }
 
 
     private fun setFilter(@StringRes filtringLabelString:Int, @StringRes noTaskLabelString:Int,noTaskIconVariable:Int,taskAddVisible:Boolean){
 
+        _currentFilteringLabel.value = filtringLabelString
+        _noTasksLabel.value = noTaskLabelString
+        _noTaskIconRes.value = noTaskIconVariable
+        _tasksAddViewVisible.value = taskAddVisible
     }
 
 
+ fun setSnackBarMessage(message: Int){
 
 
-
-//    /**
-//     * Sets the current task filtering type.
-//     *
-//     * @param requestType Can be [TasksFilterType.ALL_TASKS],
-//     * [TasksFilterType.COMPLETED_TASKS], or
-//     * [TasksFilterType.ACTIVE_TASKS]
-//     */
-//    fun setFiltering(requestType: TasksFilterType) {
-//        currentFiltering = requestType
-//
-//        // Depending on the filter type, set the filtering label, icon drawables, etc.
-//        when (requestType) {
-//            TaskFilterType.ALLTASK -> {
-//                setFilter(
-//                    R.string.label_all, R.string.no_tasks_all,
-//                    R.drawable.logo_no_fill, true
-//                )
-//            }
-//            TaskFilterType.ACTIVE_TASK -> {
-//                setFilter(
-//                    R.string.label_active, R.string.no_tasks_active,
-//                    R.drawable.ic_check_circle_96dp, false
-//                )
-//            }
-//            TaskFilterType.COMPLETED_TASK -> {
-//                setFilter(
-//                    R.string.label_completed, R.string.no_tasks_completed,
-//                    R.drawable.ic_verified_user_96dp, false
-//                )
-//            }
-//        }
-//        // Refresh list
-//        loadTasks(false)
-//    }
-//
-//    private fun setFilter(
-//        @StringRes filteringLabelString: Int, @StringRes noTasksLabelString: Int,
-//        @DrawableRes noTaskIconDrawable: Int, tasksAddVisible: Boolean
-//    ) {
-//        _currentFilteringLabel.value = filteringLabelString
-//        _noTasksLabel.value = noTasksLabelString
-//        _noTaskIconRes.value = noTaskIconDrawable
-//        _tasksAddViewVisible.value = tasksAddVisible
-//    }
+     mSnackBarmessage.value = Event(message)
+ }
 
 
 
