@@ -155,7 +155,7 @@ private fun filterTask(taskResult:Result<List<Task>>):LiveData<List<Task>>{
 
 
 
-    private fun startFiltering (taskType:TaskFilterType){
+     fun startFiltering (taskType:TaskFilterType){
 
         currentfiltering=taskType
 

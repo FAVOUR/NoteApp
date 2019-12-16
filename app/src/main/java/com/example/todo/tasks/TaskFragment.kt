@@ -2,10 +2,8 @@ package com.example.todo.tasks
 
 
 import android.os.Bundle
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.appcompat.widget.PopupMenu
 import androidx.fragment.app.viewModels
 import com.example.todo.R
@@ -37,12 +35,61 @@ class TaskFragment : Fragment() {
 
     }
 
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+//        return super.onOptionsItemSelected(item)
+        when(item.itemId){
+
+            R.id.filter ->
+                showFiteringpopupMenu()
+            R.id.clear->
+                viewModel.clearCompletedTask()
+
+            R.id.refresh->viewModel.loadTasks(true)
+        }
+    }
+
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+
+        inflater.inflate(R.menu.task_fragment_menu,menu)
+    }
+
+
 
     fun showFiteringpopupMenu(){
 
-        val view = activity?.findViewById<View>(R.id.)
-        PopupMenu(requireContext(),view!!)
+        val view = activity?.findViewById<View>(R.id.filter)   ?: return
+        PopupMenu(requireContext(),view).run {
 
+            menuInflater.inflate(R.menu.filter_tasks,menu)
+
+
+            setOnMenuItemClickListener {
+
+                viewModel.startFiltering(
+
+                    when(it.itemId){
+
+                        R.id.active ->TaskFilterType.ACTIVE_TASK
+                        R.id.completed ->TaskFilterType.COMPLETED_TASK
+                            else->
+                                TaskFilterType.ALLTASK
+                    }
+                )
+                true
+            }
+
+            show()
+
+
+        }
+
+
+    }
+
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
     }
 
 
