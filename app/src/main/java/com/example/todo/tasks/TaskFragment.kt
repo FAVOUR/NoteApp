@@ -89,8 +89,15 @@ class TaskFragment : Fragment() {
 
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
+
+        viewFragmentBinding.lifecycleOwner= this.viewLifecycleOwner
+
+
+
     }
 
+
+    private fun setupSnackBar(){}
 
 
 }
